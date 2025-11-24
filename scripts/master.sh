@@ -14,13 +14,11 @@ wget -O - https://packages.broadcom.com/artifactory/api/security/keypair/SaltPro
 wget -O /etc/apt/sources.list.d/salt.sources \
   https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources
 
-  # Specifying the masters ip-address to the config file and auto accepting minion-keys
-  # Note: Auto accepting should only be done in test/dev environments, not for production!
-  
-  
-
 sudo apt-get update -y
 sudo apt-get install -y salt-master
+
+# Auto accepting minion-keys
+# Note: Auto accepting should only be done in test/dev environments, not for production!
 
 sudo echo "auto_accept: True" >> /etc/salt/master
 
