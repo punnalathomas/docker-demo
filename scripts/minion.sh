@@ -24,6 +24,7 @@ echo "master: 192.168.12.3" | sudo tee /etc/salt/minion
 HOSTNAME=$(hostname)
 echo "id: $HOSTNAME" | sudo tee -a /etc/salt/minion
 
-# sudo systemctl restart salt-minion
+sudo systemctl restart salt-minion
+# stop and start again due to issues
 sudo systemctl stop salt-minion
 sudo systemctl start salt-minion
