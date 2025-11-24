@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     master.vm.network "private_network", ip: "192.168.12.3"
     master.vm.provision "shell", path: "scripts/master.sh"
 
-    # Lisää 2 GB RAM
+    # Add 2 GB RAM
     master.vm.provider "virtualbox" do |vb|
       vb.memory = 2048   # master: 2 GB
       vb.cpus = 2        # master: 2 CPU
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     minion.vm.network "private_network", ip: "192.168.12.100"
     minion.vm.provision "shell", path: "scripts/minion.sh"
 
-    # Lisää 1 GB RAM
+    # Add 1 GB RAM
     minion.vm.provider "virtualbox" do |vb|
       vb.memory = 1024   # minion1: 1 GB
       vb.cpus = 1        # minion1: 1 CPU   
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     minion.vm.network "private_network", ip: "192.168.12.101"
     minion.vm.provision "shell", path: "scripts/minion.sh"
 
-    # Lisää 1 GB RAM
+    # Add 1 GB RAM
     minion.vm.provider "virtualbox" do |vb|
       vb.memory = 1024   # minion2: 1 GB
       vb.cpus = 1        # minion2: 1 CPU
