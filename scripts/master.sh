@@ -24,6 +24,7 @@ sudo apt-get install -y salt-master
 
 sudo echo "auto_accept: True" >> /etc/salt/master
 
+
 sudo systemctl stop salt-master
 sudo systemctl start salt-master
 
