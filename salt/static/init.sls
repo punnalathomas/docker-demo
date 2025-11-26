@@ -1,14 +1,9 @@
-/static-files-directory:
-  file.directory:
-    - name: /srv/www/static
-    - user: www-data
-    - group: www-data
-    - makedirs: True
-
-/static-files-index:
-  file.recurse:
-    - name: /srv/www/static
+copy-static-content:
+  dockerng.copy:
+    - name: nginx-demo
     - source: salt://static/files
+    - dst: /usr/share/nginx/html
     - clean: True
-    - user: www-data
-    - group: www-data
+    - require:
+        - dockerng.running: nginx-container
+
