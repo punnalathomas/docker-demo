@@ -8,11 +8,33 @@ sudo apt-get install -y wget curl gnupg2 micro bash-completion
 
 sudo mkdir -p /etc/apt/keyrings
 
-wget -O - https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public \
-  | sudo tee /etc/apt/keyrings/salt-archive-keyring.pgp > /dev/null
+#######################################
+# Salt keyring — only update if changed
+#######################################
 
-wget -O /etc/apt/sources.list.d/salt.sources \
+TMP_KEY=/tmp/salt-key.pgp
+wget -q -O "$TMP_KEY" \
+  https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public
+
+if ! cmp -s "$TMP_KEY" /etc/apt/keyrings/salt-archive-keyring.pgp 2>/dev/null; then
+  echo "[*] Updating Salt keyring"
+  sudo cp "$TMP_KEY" /etc/apt/keyrings/salt-archive-keyring.pgp
+fi
+
+#######################################
+# Salt apt source — write only if changed
+#######################################
+
+TMP_SRC=/tmp/salt.sources
+wget -q -O "$TMP_SRC" \
   https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources
+
+DEST_SRC=/etc/apt/sources.list.d/salt.sources
+
+if ! cmp -s "$TMP_SRC" "$DEST_SRC" 2>/dev/null; then
+  echo "[*] Updating Salt sources.list entry"
+  sudo cp "$TMP_SRC" "$DEST_SRC"
+fi
 
 sudo apt-get update -y
 sudo apt-get install -y salt-master
@@ -25,3 +47,5 @@ sudo systemctl stop salt-master
 sudo systemctl start salt-master
 
 sudo systemctl enable --now salt-master
+
+echo "[*] Salt master provisioned successfully"
