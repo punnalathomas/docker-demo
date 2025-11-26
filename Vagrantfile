@@ -15,7 +15,12 @@ Vagrant.configure("2") do |config|
     # Add 2 GB RAM
     master.vm.provider "virtualbox" do |vb|
       vb.memory = 2048   # master: 2 GB
-      vb.cpus = 2        # master: 2 CPU
+      vb.cpus = 1        # master: 1 CPU
+      
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
+      vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+      vb.customize ["modifyvm", :id, "--pae", "on"]
     end
   end
 
