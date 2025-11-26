@@ -18,13 +18,13 @@ sudo apt-get update -y
 sudo apt-get install -y salt-minion
 
 # Set master IP
-echo "master: 192.168.12.3" | sudo tee /etc/salt/minion
+echo "master: 192.168.12.10" | sudo tee /etc/salt/minion
 
 # Use hostname as id
 HOSTNAME=$(hostname)
 echo "id: $HOSTNAME" | sudo tee -a /etc/salt/minion
 
-# Make systemd-override that cleans old PID-file always before start
+# Run systemd-override that cleans leftover PID files before start
 sudo mkdir -p /etc/systemd/system/salt-minion.service.d
 cat << 'EOF' | sudo tee /etc/systemd/system/salt-minion.service.d/override.conf
 [Service]
@@ -34,7 +34,7 @@ EOF
 
 sudo systemctl daemon-reload
 
-# Full restart (stop and start again due to issues)
+# Run full restart (including stop and start in case of issues)
 sudo systemctl stop salt-minion || true
 sudo systemctl reset-failed salt-minion || true
 sudo systemctl enable salt-minion
