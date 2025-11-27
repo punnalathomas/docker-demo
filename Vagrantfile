@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     master.vm.hostname = "master"
     master.vm.network "private_network", ip: "192.168.12.10"
 
-    # Forward load balancer on Windows host (http://localhost:8080)
+    # Forward load balancer on host (http://localhost:8080)
     master.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
 
     master.vm.provision "shell", path: "scripts/master.sh"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     minion.vm.hostname = "minion1"
     minion.vm.network "private_network", ip: "192.168.12.11"
 
-    # Forward container ports on Windows host (http://localhost:8081)
+    # Forward container ports on host (http://localhost:8081)
     minion.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
     minion.vm.network "forwarded_port", guest: 8082, host: 8082, auto_correct: true
     minion.vm.network "forwarded_port", guest: 8083, host: 8083, auto_correct: true
