@@ -10,13 +10,6 @@ Vagrant.configure("2") do |config|
   config.vm.define "master", primary: true do |master|
     master.vm.hostname = "master"
     master.vm.network "private_network", ip: "192.168.12.10"
-<<<<<<< HEAD
-=======
-
-    # Forward load balancer port on host (http://localhost:8080)
-    master.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
-
->>>>>>> b348a944398e0147f3969ec0b563e231845bb10a
     master.vm.provision "shell", path: "scripts/master.sh"
 
     # Add 2 GB RAM
@@ -38,14 +31,10 @@ Vagrant.configure("2") do |config|
     minion.vm.hostname = "minion1"
     minion.vm.network "private_network", ip: "192.168.12.11"
 
-<<<<<<< HEAD
     # Forward load balancer port on host (http://localhost:8080)
     minion.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
 
     # Forward container ports on host if LB not used (http://localhost:8081)
-=======
-    # Forward container ports on host (http://localhost:8081)
->>>>>>> b348a944398e0147f3969ec0b563e231845bb10a
     minion.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
     minion.vm.network "forwarded_port", guest: 8082, host: 8082, auto_correct: true
     minion.vm.network "forwarded_port", guest: 8083, host: 8083, auto_correct: true
