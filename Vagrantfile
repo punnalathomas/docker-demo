@@ -10,6 +10,10 @@ Vagrant.configure("2") do |config|
   config.vm.define "master", primary: true do |master|
     master.vm.hostname = "master"
     master.vm.network "private_network", ip: "192.168.12.10"
+
+    # Forward load balancer on Windows host (http://localhost:8080)
+    master.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+
     master.vm.provision "shell", path: "scripts/master.sh"
 
     # Add 2 GB RAM
@@ -30,6 +34,12 @@ Vagrant.configure("2") do |config|
   config.vm.define "minion1" do |minion|
     minion.vm.hostname = "minion1"
     minion.vm.network "private_network", ip: "192.168.12.11"
+
+    # Forward container ports on Windows host (http://localhost:8081)
+    minion.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
+    minion.vm.network "forwarded_port", guest: 8082, host: 8082, auto_correct: true
+    minion.vm.network "forwarded_port", guest: 8083, host: 8083, auto_correct: true
+
     minion.vm.provision "shell", path: "scripts/minion.sh"
 
     # Add 1 GB RAM
