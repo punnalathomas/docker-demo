@@ -4,7 +4,7 @@ set -e
 echo "[*] Installing Salt master"
 
 sudo apt-get update -y
-sudo apt-get install -y wget curl gnupg2 micro bash-completion
+sudo apt-get install -y wget curl gnupg2 git micro bash-completion
 
 sudo mkdir -p /etc/apt/keyrings
 
