@@ -6,6 +6,7 @@ services:
       - "8081:80"
     volumes:
       - ./site:/usr/share/nginx/html:ro
+    restart: unless-stopped
 
   web2:
     image: nginx
@@ -14,6 +15,7 @@ services:
       - "8082:80"
     volumes:
       - ./site:/usr/share/nginx/html:ro
+    restart: unless-stopped
 
   web3:
     image: nginx
@@ -22,3 +24,4 @@ services:
       - "8083:80"
     volumes:
       - ./site:/usr/share/nginx/html:ro
+    restart: unless-stopped
