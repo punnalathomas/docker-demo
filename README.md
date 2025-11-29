@@ -8,7 +8,7 @@ This project was created by [punnalathomas](https://github.com/punnalathomas) an
 
 ![img1](./img/img1.jpeg) 
 
-The basic idea behing load balancing: a load balancer (reverse proxy) stands before a cluster of backend webservers and distrubutes traffic to the servers.
+The basic idea behing load balancing: a load balancer (reverse proxy) stands before a cluster of backend web servers and distrubutes traffic to the servers.
 
 ## Architecture Overview
 
