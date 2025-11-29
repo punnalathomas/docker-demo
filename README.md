@@ -1,6 +1,6 @@
 # Docker & SaltStack Load Balancing Demo
 
-This project demonstrates an Infrastructure as Code (IaC) environment using Vagrant, SaltStack, and Docker.
+This project demonstrates an Infrastructure as Code (IaC) environment using Vagrant, SaltStack, Docker and Nginx.
 
 It automatically provisions a virtual infrastructure where a Salt Master configures a Minion to run a cluster of Nginx web servers behind an Nginx Load Balancer.
 
@@ -12,7 +12,7 @@ The basic idea behing load balancing: a load balancer (reverse proxy) stands bef
 
 ## Architecture Overview
 
-The setup consists of two Virtual Machines running Debian Bookworm:
+The setup consists of two Virtual Machines running Linux Debian Bookworm:
 1.  **Master:** Runs the SaltStack Master service.
 2.  **Minion:** Runs Salt Minion, Docker Engine, and Nginx Reverse Proxy.
 
@@ -126,7 +126,7 @@ Expected output: Salt should return a summary report showing Succeeded: X (where
 
 Result: The background color of the page should cycle between Blue, Pink, and Yellow. This confirms that the Nginx Load Balancer is working correctly and distributing traffic to different backend containers in a Round-Robin fashion.
 
-Alternatively, you can run localhost on the command line either on the Master or Minion (as the VMs don't have a graphical user interface by deafult):
+Alternatively, you can run localhost on the command line either on the Master or on the Minion (as the VMs don't have a graphical user interface by deafult):
 
 Master:
 ```Bash
