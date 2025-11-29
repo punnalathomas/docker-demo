@@ -8,6 +8,8 @@ This project was created by [punnalathomas](https://github.com/punnalathomas) an
 
 ![img1](./img/img1.jpeg) 
 
+The basic idea behing load balancing: a load balancer (reverse proxy) stands before a cluster of backend webservers and distrubutes traffic to the servers.
+
 ## Architecture Overview
 
 The setup consists of two Virtual Machines running Debian Bookworm:
@@ -180,3 +182,7 @@ In case there is need to copy files manually, do the following:
 **In a Real Production Environment:** In a real-world scenario, all backend containers would serve identical content. The goal of load balancing in production is to distribute workload, ensure redundancy, and provide high availability, while keeping the user experience consistent regardless of which specific server handles the request.
 
 ![img2](./img/img2.png)
+
+Load balancer in action
+
+
