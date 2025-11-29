@@ -14,7 +14,7 @@ The basic idea behing load balancing: a load balancer (reverse proxy) stands bef
 
 The setup consists of two Virtual Machines running Linux Debian Bookworm:
 1.  **Master:** Runs the SaltStack Master service.
-2.  **Minion:** Runs Salt Minion, Docker Engine, and Nginx Reverse Proxy.
+2.  **Minion:** Runs Salt Minion, Docker Engine, Nginx Reverse Proxy and Ngix webservers in Containers.
 
 ### Traffic Flow Diagram
 ```text
