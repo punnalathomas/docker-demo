@@ -16,7 +16,7 @@ The basic idea behing load balancing: a load balancer (reverse proxy) stands bef
 
 The setup consists of two Virtual Machines running Linux Debian Bookworm:
 1.  **Master:** Runs the SaltStack Master service.
-2.  **Minion:** Runs Salt Minion, Docker Engine, Nginx Reverse Proxy/Load Balancer and Ngix web servers in Containers.
+2.  **Minion:** Runs Salt Minion, Docker Engine, the Nginx Reverse Proxy (Load Balancer); and Nginx web servers within Docker containers.
 
 ### Traffic Flow Diagram
 ```text
@@ -35,6 +35,18 @@ The setup consists of two Virtual Machines running Linux Debian Bookworm:
 [ DOCKER CONTAINER 1 ]                [ DOCKER CONTAINER 2 ] ...
    (Blue Site)                           (Pink Site)
 ```
+
+### Port Mapping Explained
+
+The networking relies on a specific chain of port forwards defined in the configuration files. See [Project Structure](#project-structure) for more details.
+
+1. Host Machine (Windows): User accesses http://localhost:8080.
+
+2. VirtualBox NAT (Vagrantfile): Forwards traffic from Host:8080 to Minion VM:80.
+
+3. Minion VM (nginx.conf): Nginx Proxy listens on Port 80.
+
+4. Docker Internal (docker-compose.yml): Nginx Proxy forwards traffic to containers on Ports 8081, 8082, 8083.
 
 ---
 
@@ -116,7 +128,7 @@ Expected output: Salt should return a summary report showing Succeeded: X (where
 
 ---
 
-## Verify the Demo
+## Verification
 
 1. Open your web browser on your host machine.
 
@@ -144,7 +156,9 @@ vagrant ssh minion1
 curl http://localhost
 ```
 
-### Project Structure
+---
+
+## Project Structure
 ```Plaintext
 docker-demo/
 ├── Vagrantfile
@@ -202,7 +216,9 @@ docker-demo/
 
 Project structure - in detail
 
-### Developer Note: Synced Folders
+---
+
+## Developer Note: Synced Folders
 
 The provisioning script automatically links the local`salt/` folder to `/srv/salt/` on the Master. This means you can edit files on your host machine (e.g., in VS Code) and simply run `state.apply` on the Master to see changes instantly, without needing to copy files manually.
 
@@ -214,11 +230,13 @@ In case there is need to copy files manually, do the following:
 
 ---
 
-## Note on Production vs. Demo Environment
+## Developer Note: Production vs. Demo Environment
 
 **Why are the sites different colors?** In this educational demo, we have intentionally modified the CSS of each container (Blue, Pink, Yellow) to provide a clear visual indication that the load balancer is routing traffic to different instances.
 
 **In a Real Production Environment:** In a real-world scenario, all backend containers would serve identical content. The goal of load balancing in production is to distribute workload, ensure redundancy, and provide high availability, while keeping the user experience consistent regardless of which specific server handles the request.
+
+---
 
 ![img2](./img/img2.png)
 
