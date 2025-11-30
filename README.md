@@ -218,6 +218,8 @@ docker-demo/
 
 Project structure - in detail
 
+In addition to this project structure overview, the provisioning and configuration files themselves are heavily commented in order to guide the reader throug the demo. 
+
 ---
 
 ## Developer Note: Synced Folders
