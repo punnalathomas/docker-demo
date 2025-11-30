@@ -8,9 +8,11 @@ It automatically and idempotently provisions a virtual infrastructure where a Sa
 
 This project was created by [punnalathomas](https://github.com/punnalathomas) and [nlholm](https://github.com/nlholm) as group work for a configuration management systems course. A report for the creation process is available at [Docker Demo Documentation](https://github.com/nlholm/docker-demo-documentation).
 
-![img1](./img/img1.jpeg) 
+![img1 - created by Gemini](./img/img1.png) 
 
 The basic idea behing load balancing: a load balancer (reverse proxy) stands before a cluster of backend web servers and distrubutes traffic to the servers.
+
+Please note: Unlike the general diagram above, traffic in this demo environment does not originate from the public Internet. All requests are sent locally from the Host machine (simulating external clients) and directed to the internal Load Balancer.
 
 ## Architecture Overview
 
