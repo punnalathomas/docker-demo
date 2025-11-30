@@ -12,15 +12,16 @@ Vagrant.configure("2") do |config|
     master.vm.network "private_network", ip: "192.168.12.10"
     master.vm.provision "shell", path: "scripts/master.sh"
 
-    # Add 2 GB RAM
+    # VirtualBox Provider Settings
+    # Allocate more RAM and enable performance optimizations
     master.vm.provider "virtualbox" do |vb|
       vb.memory = 2048   # master: 2 GB
       vb.cpus = 1        # master: 1 CPU
-      
-      vb.customize ["modifyvm", :id, "--ioapic", "on"]
-      vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
-      vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
-      vb.customize ["modifyvm", :id, "--pae", "on"]
+
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]       # Enable I/O APIC for better I/O handling
+      vb.customize ["modifyvm", :id, "--nestedpaging", "on"] # Enable nested paging for memory efficiency
+      vb.customize ["modifyvm", :id, "--hwvirtex", "on"]     # Enforce hardware virtualization extensions
+      vb.customize ["modifyvm", :id, "--pae", "on"]          # Enable Physical Address Extension   
     end
   end
 
@@ -41,10 +42,16 @@ Vagrant.configure("2") do |config|
 
     minion.vm.provision "shell", path: "scripts/minion.sh"
 
-    # Add 1 GB RAM
+    # VirtualBox Provider Settings
+    # Allocate more RAM and enable performance optimizations
     minion.vm.provider "virtualbox" do |vb|
-      vb.memory = 2048   # minion1: 1 GB
-      vb.cpus = 1        # minion1: 1 CPU   
+      vb.memory = 2048   # minion1: 2 GB
+      vb.cpus = 1        # minion1: 1 CPU  
+      
+      vb.customize ["modifyvm", :id, "--ioapic", "on"]       # Enable I/O APIC for better I/O handling
+      vb.customize ["modifyvm", :id, "--nestedpaging", "on"] # Enable nested paging for memory efficiency
+      vb.customize ["modifyvm", :id, "--hwvirtex", "on"]     # Enforce hardware virtualization extensions
+      vb.customize ["modifyvm", :id, "--pae", "on"]          # Enable Physical Address Extension 
     end
   end
 
