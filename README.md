@@ -6,7 +6,7 @@ This project demonstrates an Infrastructure as Code (IaC) environment using Vagr
 
 It automatically and idempotently provisions a virtual infrastructure where a Salt Master configures a Minion to run a cluster of Nginx web servers behind an Nginx Load Balancer.
 
-This project was created by [punnalathomas](https://github.com/punnalathomas) and [nlholm](https://github.com/nlholm) as group work for a configuration management systems course. A report for the creation process is available at [Docker Demo Documentation](https://github.com/nlholm/docker-demo-documentation).
+This project was created by [punnalathomas](https://github.com/punnalathomas) and [nlholm](https://github.com/nlholm) as group work for a configuration management systems course. A report for the creation process (including sources used) is available at [Docker Demo Documentation](https://github.com/nlholm/docker-demo-documentation).
 
 ![img1 - created by Gemini](./img/img1.png) 
 
@@ -218,7 +218,7 @@ docker-demo/
 
 Project structure - in detail
 
-In addition to this project structure overview, the provisioning and configuration files themselves are heavily commented in order to guide the reader throug the demo. 
+In addition to this project structure overview, the provisioning and configuration files themselves are heavily commented in order to guide the reader through the demo. 
 
 ---
 
