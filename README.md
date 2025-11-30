@@ -158,7 +158,7 @@ vagrant ssh minion1
 curl http://localhost
 ```
 
-You can delete (`vagrant destroy`) and set the virtual machines up again (`vagrant up`) as many thimes as you wish. Running the command `sudo salt 'minion1' state.apply` will set up the environment in the same manner every time, idempotently. This is Infratructure as Code with One Source of Truth.
+You can delete (`vagrant destroy`) and set the virtual machines up again (`vagrant up`) as many times as you wish. Running the command `sudo salt 'minion1' state.apply` will set up the environment in the same manner every time, idempotently. This is Infratructure as Code with One Source of Truth.
 
 ---
 
