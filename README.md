@@ -138,7 +138,7 @@ Expected output: Salt should return a summary report showing Succeeded: X (where
 
 3. You should see a web page served by one of the containers.
 
-4. Refresh the page (F5) multiple times.
+4. Refresh the page (F5) multiple times (or Ctrl + F5 for forced refresh).
 
 Result: The background color of the page should cycle between Blue, Pink, and Yellow. This confirms that the Nginx Load Balancer is working correctly and distributing traffic to different backend containers in a Round-Robin fashion.
 
