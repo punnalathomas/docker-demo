@@ -126,7 +126,7 @@ minion1:
 sudo salt 'minion1' state.apply
 ```
 
-Expected output: Salt should return a summary report showing Succeeded: X (where X is the number of steps) and Failed: 0.
+Running the state will take a few minutes on the first time. Expected output: Salt should return a summary report showing Succeeded: X (where X is the number of steps) and Failed: 0.
 
 ---
 
