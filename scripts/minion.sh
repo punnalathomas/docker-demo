@@ -17,6 +17,7 @@ echo "[*] Installing Salt minion (idempotently)"
 
 sudo apt-get update -y
 sudo apt-get install -y wget curl gnupg2 git micro tree bash-completion
+
 sudo mkdir -p /etc/apt/keyrings
 
 #######################################
@@ -56,7 +57,7 @@ sudo apt-get install -y salt-minion
 
 #######################################
 # Minion Configuration
-# Sets the Master IP and Minion ID (hostname)
+# Sets the Master IP and Minion ID (hostname), only if changed.
 #######################################
 
 MINION_CFG_CONTENT=$(cat <<EOF
