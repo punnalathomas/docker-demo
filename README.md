@@ -4,7 +4,7 @@
 
 This project demonstrates an Infrastructure as Code (IaC) environment using Vagrant, SaltStack, Docker and Nginx.
 
-It automatically and idempotently provisions a virtual infrastructure where a Salt master configures a minion to run a cluster of Nginx web servers inside Docker containers behind an Nginx load balancer.
+It automatically and idempotently provisions a virtual infrastructure where a Salt Master configures a Minion to run a cluster of Nginx Web Servers inside Docker Containers behind an Nginx Load Balancer.
 
 This project was created by [punnalathomas](https://github.com/punnalathomas) and [nlholm](https://github.com/nlholm) as group work for a configuration management systems course. A report for the creation process (including sources used) is available at [Docker Demo Documentation](https://github.com/nlholm/docker-demo-documentation).
 
@@ -12,11 +12,11 @@ This project was created by [punnalathomas](https://github.com/punnalathomas) an
 
 The basic idea behind load balancing: a load balancer (reverse proxy) stands before a cluster of backend web servers and distributes traffic to the servers.
 
-Please note: Unlike the general diagram above, traffic in this demo environment does not originate from the public internet. All requests are sent locally from the host machine (simulating external clients) and directed to the internal load balancer.
+Please note: Unlike the general diagram above, traffic in this demo environment does not originate from the public Internet. All requests are sent locally from the Host Machine (simulating external clients) and directed to the internal Load Balancer.
 
 ## Architecture Overview
 
-The setup consists of two virtual machines running Linux Debian Bookworm:
+The setup consists of two Virtual Machines running Linux Debian Bookworm:
 1.  **Master:** Runs the SaltStack Master service.
 2.  **Minion:** Runs Salt Minion, Docker Engine, the Nginx Load Balancer (Reverse Proxy); and Nginx Web Servers within Docker Containers.
 
