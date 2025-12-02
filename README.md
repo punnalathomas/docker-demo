@@ -10,7 +10,7 @@ This project was created by [punnalathomas](https://github.com/punnalathomas) an
 
 ![img1 - created by Gemini](./img/img1.png) 
 
-The basic idea behind load balancing: a load balancer (reverse proxy) stands before a cluster of backend web servers and distributes traffic to the servers.
+The basic idea behind load balancing: a load balancer (reverse proxy) stands before a cluster of backend web servers and distributes traffic to the servers. Diagram has been created with Gemini LLM.
 
 Please note: Unlike the general diagram above, traffic in this demo environment does not originate from the public Internet. All requests are sent locally from the Host Machine (simulating external clients) and directed to the internal Load Balancer.
 
@@ -252,6 +252,6 @@ Alternatively, in case you are using Vagrant but there is a need to copy files m
 
 ![img2](./img/img2.png)
 
-Load balancer in action
+Load balancer in action. Picture of adventurers has been created with Gemini LLM.
 
 
