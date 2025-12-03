@@ -10,7 +10,7 @@ set -e
 #   3. Links /vagrant/salt to /srv/salt for host-based editing.
 # ----------------------------------------------------------------------
 
-echo "[*] Installing Salt master (idempotently)"
+echo "[*] Installing Salt master"
 
 
 #######################################
